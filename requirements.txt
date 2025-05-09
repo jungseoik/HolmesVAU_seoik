@@ -25,3 +25,4 @@ torchvision==0.16.2
 tqdm
 transformers==4.37.2
 yacs
+pydantic==2.10.6
