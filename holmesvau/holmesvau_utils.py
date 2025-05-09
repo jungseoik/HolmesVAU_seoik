@@ -47,7 +47,10 @@ def generate(video_path, prompt, model, tokenizer, generation_config, sampler, d
         # anomaly-focused sampling
         anomaly_score, sampled_idxs = sampler.density_aware_sample(pixel_values, model, select_frames)
         sparse_pixel_values = pixel_values[sampled_idxs]
-        frame_indices, num_patches_list = [dense_frame_indices[i] for i in sampled_idxs], [num_patches_list[i] for i in sampled_idxs]
+        # frame_indices, num_patches_list = [dense_frame_indices[i] for i in sampled_idxs], [num_patches_list[i] for i in sampled_idxs]
+        frame_indices = [dense_frame_indices[int(i)] for i in sampled_idxs]
+        num_patches_list = [num_patches_list[int(i)] for i in sampled_idxs]
+
         print('Sampled frames: ', frame_indices)
     else:
         # uniform sampling
